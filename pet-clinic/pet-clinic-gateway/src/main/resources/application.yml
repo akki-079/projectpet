@@ -1,0 +1,45 @@
+server:
+   port: 8187
+   
+spring:
+    application:
+        name: pet-clinic-gateway
+    main:
+        web-application-type: reactive
+    cloud:
+        gateway:
+            default-filters:
+                - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+            globalcors:
+                corsConfigurations:
+                    '[/**]':
+                        allowedOrigins: "*"
+                        allowedMethods: "*"
+                        allowedHeaders: "*" 
+            routes:
+                - id: owner-service
+                  uri: lb://owner-service
+                  predicates:
+                      - Path=/owner/**
+                - id: vet-service
+                  uri: lb://vet-service
+                  predicates:
+                      - Path=/vet/**
+                - id: visit-service
+                  uri: lb://visit-service
+                  predicates:
+                      - Path=/visit/**
+
+
+eureka:
+  client: 
+      register-with-eureka: true
+      service-url:
+          defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka/}   
+          
+management:
+   endpoint:
+       web:
+         exposure:
+            include:
+            - '*'

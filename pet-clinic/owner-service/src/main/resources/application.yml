@@ -1,0 +1,37 @@
+server:
+  port: 8235
+  
+spring:
+#  datasource:
+#    driver-class-name: org.mariadb.jdbc.Driver
+#    url: jdbc:mariadb://localhost:3306/ownerdb
+#    username: root
+#    password: root
+  application:
+    name: owner-service
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  config:
+      import: optional:configserver:${CONFIG_SERVER_URL:http://localhost:8888/}
+
+    
+eureka:
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka/}
+
+
+management:
+   endpoints:
+       web:
+         exposure:
+            include:
+            - prometheus
+            - health  
+    
+logging:
+  file:
+    name: OwnerService.log

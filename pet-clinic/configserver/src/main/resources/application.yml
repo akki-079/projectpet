@@ -1,0 +1,9 @@
+server:
+  port: 8888
+  
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: ${GIT_URL:https://github.com/akki-079/config.git}

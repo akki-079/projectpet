@@ -1,0 +1,17 @@
+INDEX VERSION 1.131+C:\training\Java_training_microservices\ProjectMock\.metadata\.plugins\org.eclipse.jdt.core
+1267344999.index
+104082222.index
+3348301985.index
+1875312217.index
+4102539918.index
+1074493258.index
+208089862.index
+1865797976.index
+3625808698.index
+2658924092.index
+1353707285.index
+1127126951.index
+3873142461.index
+3288932462.index
+3383697757.index
+3785086468.index

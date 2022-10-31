@@ -1,0 +1,75 @@
+version: '3'
+services:
+  eureka-server:
+    image: eureka-server:1.0
+    container_name: eureka-server
+    expose:
+    - "8761"
+    ports: 
+    - 8761:8761
+    
+  config-server:
+    image: config-server:1.0
+    container_name: config-server
+    ports:
+    - "8888:8888"
+    environment:
+      - JAVA_OPTS=
+            -DGIT_URL=https://github.com/akki-079/config.git
+              
+  
+  owner-service:
+    image: owner-service:1.0
+    container_name: owner-service
+    ports:
+    - "8235"
+    environment:
+      - JAVA_OPTS=
+           -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka -DCONFIG_SERVER_URL=http://config-server:8888/ #(name of eureka host==eureka container name)
+    depends_on:
+      - eureka-server
+      - config-server
+    links: 
+        - eureka-server
+        - config-server
+        
+  vet-service:
+    image: vet-service:1.0
+    container_name: vet-service
+    ports:
+    - "8236"
+    environment:
+      - JAVA_OPTS=
+            -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka -DCONFIG_SERVER_URL=http://config-server:8888/ #(name of eureka host==eureka container name)
+    depends_on:
+      - eureka-server
+      - config-server
+    links: 
+        - eureka-server
+        - config-server
+    
+  visit-service:
+    image: visit-service:1.0
+    container_name: visit-service
+    ports:
+    - "8237"
+    environment:
+      - JAVA_OPTS=
+            -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka -DCONFIG_SERVER_URL=http://config-server:8888/ #(name of eureka host==eureka container name)
+    depends_on:
+      - eureka-server
+      - config-server
+    links: 
+        - eureka-server
+        - config-server
+        
+  pet-clinic-gateway:
+    image: pet-clinic-gateway:1.0
+    container_name: pet-clinic-gateway
+    ports:
+    - "8187:8187"
+    environment:
+      - JAVA_OPTS=
+            -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka  #(name of eureka host==eureka container name)
+    links: 
+        - eureka-server

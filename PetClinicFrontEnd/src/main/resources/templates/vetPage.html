@@ -1,0 +1,26 @@
+<div class="row">
+	<div class="card mb-1" style="height: 8vh">
+
+		<div style="float: right; margin-top: 0.5vh;">
+			<button type="button" class="btn btn-primary"
+				style="float: right; margin-right: 1vw" data-bs-toggle="modal"
+				data-bs-target="#vetModal" onclick="addVetModal()">Add New
+				Vet</button>
+			<button type="button" class="btn btn-primary"
+				style="float: right; margin-right: 1vw" data-bs-toggle="modal"
+				data-bs-target="#vetModal" onclick="listVetsModal()">List
+				Vets By Speciality</button>
+		</div>
+
+	</div>
+</div>
+<div class="row" style="height: inherit;overflow: auto !important">
+	<div class="col-1"></div>
+	<div class="col-10">
+		<table class="table table-dark table-striped" id="vet-table">
+
+
+		</table>
+	</div>
+	<div class="col-1"></div>
+</div>

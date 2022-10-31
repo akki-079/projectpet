@@ -1,0 +1,128 @@
+<section class="content pt-3" style="margin-top: -2.8vh">
+	<!-- SELECT2 EXAMPLE -->
+	<form>
+		<div class="card card-default">
+			<div class="card-header card-danger card-outline">
+				<h3 class="card-title">
+					<i class="fa fa-shield text-danger mr-2" aria-hidden="true"></i>Record
+					Visit
+				</h3>
+			</div>
+			<!-- /.card-header -->
+			<div class="card-body">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="row mb-1">
+							<div class="col-md-3">
+								<div class="form-group">
+									<label>Owner</label><span class="text-danger ">*</span> <select
+										class="form-control select2bs4 " tabindex="1"
+										style="width: 100%;" id="owner" onChange="petList(this)">
+										<option value="">Select</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="col-md-3">
+								<div class="form-group">
+									<label>Pet</label><span class="text-danger">*</span> <select
+										class="form-control select2bs4" tabindex="2"
+										style="width: 100%" id="pet">
+										<option value="">Select</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="col-md-3">
+								<div class="form-group">
+									<label>Speciality</label><span class="text-danger">*</span> <select
+										class="form-control select2bs4" tabindex="3"
+										style="width: 100%;" id="speciality">
+										<option value="">Select</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="col-md-3">
+								<div class="form-group">
+									<label>Date</label><span class="text-danger">*</span>
+									<div class="input-group date" id="reservationdate"
+										data-target-input="nearest">
+										<div class="input-group-append" data-target="#reservationdate"
+											data-toggle="datetimepicker">
+											<div class="input-group-text">
+												<i class="fa fa-calendar"></i>
+											</div>
+										</div>
+										<input type="text" tabindex="9"
+											class="form-control datetimepicker-input"
+											data-target="#reservationdate" id="Effective"
+											name="Effective" placeholder="Select Date" max />
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-1">
+								<div class="form-group">
+									<label for="hours">Hours<span class="text-danger">*</span></label>
+									<select class="form-control select2bs4" tabindex="10"
+										id="hours">
+										<option value="">Select</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="col-md-1">
+								<div class="form-group">
+									<label for="minutes">Minutes</label><span class="text-danger">*</span>
+									<select class="form-control select2bs4" tabindex="11"
+										style="width: 100%;" id="minutes">
+										<option value="">Select</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="col-md-10">
+								<div class="form-group">
+									<label>Symptoms</label><span class="text-danger">*</span> <input
+										class="form-control select2bs4" tabindex="8"
+										style="width: 100%;" id="symptoms" />
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+				<hr style="border-top: 1px dashed gray;">
+			</div>
+
+			<div class="card-footer">
+				<div class="float-right" style="float: right">
+					<button type="button" class="btn btn-info" onclick="recordVisit();">
+						<i class="far fa-save"></i> Submit
+					</button>
+				</div>
+				<div class="float-left">
+					<button type="reset" class="btn btn-danger" onclick="myFunction();">
+						<i class="fas fa-times"></i> Discard
+					</button>
+				</div>
+			</div>
+			<!-- /.card-footer -->
+	</form>
+</section>
+<script>
+	$("#datepicker").datepicker({
+		maxDate : new Date()
+	});
+	loadOwnerList();
+	splList();
+	loadHours();
+	loadMinutes();
+	$("#Effective").datepicker({
+		maxDate : new Date()
+	});
+</script>

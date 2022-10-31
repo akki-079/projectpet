@@ -1,0 +1,40 @@
+<ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" id="add-page" href="#" onclick="changePage('add-page','/addVisitPage','add')" style="font-size: large;">Add Record</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" id="visit-page" href="#" onclick="changePage('visit-page','/visitPage','visit')" style="font-size: large;">Visits</a>
+  </li>
+  
+</ul>
+
+<div class="content"
+		style="overflow-y: auto !important; height: 86vh; overflow-x: none">
+		<div id="main-page-content"></div>
+	</div>
+
+<script type="text/javascript" language="javascript">  
+    var versionUpdate = (new Date()).getTime();  
+    var script = document.createElement("script");  
+    script.type = "text/javascript";  
+    script.src = "/js/visit.js?v=" + versionUpdate;  
+    document.body.appendChild(script);  
+</script>
+
+<div class="modal fade" id="visitModal" tabindex="-1" aria-labelledby="visitModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="visitModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="visitModalBody">
+       	
+      </div>
+      <div class="modal-footer" id="visitModalFooter">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
