@@ -1,16 +1,16 @@
 version: '3'
 services:
-  eurekaserver:
-    image: eurekaserver:1.0
-    #container_name: eurekaserver
+  eureka-server:
+    image: eureka-server:1.0
+    container_name: eureka-server
     expose:
     - "8761"
     ports: 
     - 8761:8761
     
-  configserver:
-    image: configserver:1.0
-    #container_name: configserver
+  config-server:
+    image: config-server:1.0
+    container_name: config-server
     ports:
     - "8888:8888"
     environment:
