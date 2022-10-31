@@ -25,7 +25,7 @@ services:
     - "8235"
     environment:
       - JAVA_OPTS=
-           -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka -DDB_USER=admin -DDB_PASSWORD=welcome1 -DJDBC_URL=jdbc:mariadb://training-server.cngnkphas7nb.us-east-1.rds.amazonaws.com:3306/ownerdb -DCONFIG_SERVER_URL=http://configserver:8888/ #(name of eureka host==eureka container name)
+           -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka -DCONFIG_SERVER_URL=http://config-server:8888/ #(name of eureka host==eureka container name)
     depends_on:
       - eurekaserver
       - configserver
@@ -40,7 +40,7 @@ services:
     - "8236"
     environment:
       - JAVA_OPTS=
-            -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka -DDB_USER=admin -DDB_PASSWORD=welcome1 -DJDBC_URL=jdbc:mariadb://training-server.cngnkphas7nb.us-east-1.rds.amazonaws.com:3306/vetdb -DCONFIG_SERVER_URL=http://configserver:8888/ #(name of eureka host==eureka container name)
+            -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka -DCONFIG_SERVER_URL=http://config-server:8888/ #(name of eureka host==eureka container name)
     depends_on:
       - eurekaserver
       - configserver
@@ -55,7 +55,7 @@ services:
     - "8237"
     environment:
       - JAVA_OPTS=
-            -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka -DDB_USER=admin -DDB_PASSWORD=welcome1 -DJDBC_URL=jdbc:mariadb://training-server.cngnkphas7nb.us-east-1.rds.amazonaws.com:3306/visitdb -DCONFIG_SERVER_URL=http://configserver:8888/ #(name of eureka host==eureka container name)
+            -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka -DCONFIG_SERVER_URL=http://config-server:8888/ #(name of eureka host==eureka container name)
     depends_on:
       - eurekaserver
       - configserver
