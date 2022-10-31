@@ -7,7 +7,7 @@ import com.demo.spring.entity.Owner;
 
 public interface OwnerRepository extends JpaRepository<Owner, Integer> {
 	
-	@Query(value = "SELECT COUNT(*) FROM OWNER o WHERE  o.PHNUMBER =:phNumber",nativeQuery = true)
+	@Query(value = "SELECT COUNT(*) FROM owner o WHERE  o.PHNUMBER =:phNumber",nativeQuery = true)
 	public Integer checkOwner(String phNumber);
 	
 	

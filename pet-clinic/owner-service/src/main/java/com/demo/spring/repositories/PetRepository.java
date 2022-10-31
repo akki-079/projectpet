@@ -9,9 +9,9 @@ import com.demo.spring.entity.Pet;
 
 public interface PetRepository extends JpaRepository<Pet, Integer> {
 	
-	@Query(value = "DELETE FROM PET WHERE OID =:oid",nativeQuery = true)
+	@Query(value = "DELETE FROM pet WHERE OID =:oid",nativeQuery = true)
 	public Integer deletePetByOId(int oid);
 	
-	@Query(value = "SELECT * FROM PET p WHERE  p.OID =:oid",nativeQuery = true)
+	@Query(value = "SELECT * FROM pet p WHERE  p.OID =:oid",nativeQuery = true)
 	public List<Pet> getByOId(int oid);
 }

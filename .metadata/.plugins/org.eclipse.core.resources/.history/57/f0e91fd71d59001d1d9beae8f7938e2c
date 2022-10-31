@@ -1,0 +1,75 @@
+version: '3'
+services:
+  eurekaserver:
+    image: eurekaserver:1.0
+    #container_name: eurekaserver
+    expose:
+    - "8761"
+    ports: 
+    - 8761:8761
+    
+  configserver:
+    image: configserver:1.0
+    #container_name: configserver
+    ports:
+    - "8888:8888"
+    environment:
+      - JAVA_OPTS=
+            -DGIT_URL=https://github.com/akki-079/config.git
+              
+  
+  owner-service:
+    image: owner-service:1.0
+    container_name: owner-service
+    ports:
+    - "8235"
+    environment:
+      - JAVA_OPTS=
+           -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka -DDB_USER=admin -DDB_PASSWORD=welcome1 -DJDBC_URL=jdbc:mariadb://training-server.cngnkphas7nb.us-east-1.rds.amazonaws.com:3306/ownerdb -DCONFIG_SERVER_URL=http://configserver:8888/ #(name of eureka host==eureka container name)
+    depends_on:
+      - eurekaserver
+      - configserver
+    links: 
+        - eurekaserver
+        - configserver
+        
+  vet-service:
+    image: vet-service:1.0
+    container_name: vet-service
+    ports:
+    - "8236"
+    environment:
+      - JAVA_OPTS=
+            -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka -DDB_USER=admin -DDB_PASSWORD=welcome1 -DJDBC_URL=jdbc:mariadb://training-server.cngnkphas7nb.us-east-1.rds.amazonaws.com:3306/vetdb -DCONFIG_SERVER_URL=http://configserver:8888/ #(name of eureka host==eureka container name)
+    depends_on:
+      - eurekaserver
+      - configserver
+    links: 
+        - eurekaserver
+        - configserver
+    
+  visit-service:
+    image: visit-service:1.0
+    container_name: visit-service
+    ports:
+    - "8237"
+    environment:
+      - JAVA_OPTS=
+            -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka -DDB_USER=admin -DDB_PASSWORD=welcome1 -DJDBC_URL=jdbc:mariadb://training-server.cngnkphas7nb.us-east-1.rds.amazonaws.com:3306/visitdb -DCONFIG_SERVER_URL=http://configserver:8888/ #(name of eureka host==eureka container name)
+    depends_on:
+      - eurekaserver
+      - configserver
+    links: 
+        - eurekaserver
+        - configserver
+        
+  pet-clinic-gateway:
+    image: pet-clinic-gateway:1.0
+    container_name: pet-clinic-gateway
+    ports:
+    - "8187:8187"
+    environment:
+      - JAVA_OPTS=
+            -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka  #(name of eureka host==eureka container name)
+    links: 
+        - eurekaserver

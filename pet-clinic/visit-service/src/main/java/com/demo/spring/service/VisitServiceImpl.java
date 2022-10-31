@@ -53,10 +53,8 @@ public class VisitServiceImpl implements VisitService{
 				OwnerDTO.class);
 		ResponseEntity<PetDTO> res2 = restTemplate.exchange("http://owner-service/owner/pet/" + PId, HttpMethod.GET,
 				req, PetDTO.class);
-		System.out.println(res1.getBody()+"res1");
 		ResponseEntity<SpecialityDTO> res3 = restTemplate.exchange("http://vet-service/vet/spl/" + splName,
 				HttpMethod.GET, req, SpecialityDTO.class);
-		System.out.println(res1.getBody()+"res1");
 		if (res1.getBody().getOwnerId() != OId) {
 			LOGGER.error("Owner not found");
 			throw new OwnerNotFoundException();
