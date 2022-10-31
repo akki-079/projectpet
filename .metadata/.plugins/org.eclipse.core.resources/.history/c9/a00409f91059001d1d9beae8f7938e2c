@@ -27,11 +27,11 @@ services:
       - JAVA_OPTS=
            -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka -DCONFIG_SERVER_URL=http://config-server:8888/ #(name of eureka host==eureka container name)
     depends_on:
-      - eurekaserver
-      - configserver
+      - eureka-server
+      - config-server
     links: 
-        - eurekaserver
-        - configserver
+        - eureka-server
+        - config-server
         
   vet-service:
     image: vet-service:1.0
@@ -42,11 +42,11 @@ services:
       - JAVA_OPTS=
             -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka -DCONFIG_SERVER_URL=http://config-server:8888/ #(name of eureka host==eureka container name)
     depends_on:
-      - eurekaserver
-      - configserver
+      - eureka-server
+      - config-server
     links: 
-        - eurekaserver
-        - configserver
+        - eureka-server
+        - config-server
     
   visit-service:
     image: visit-service:1.0
@@ -57,11 +57,11 @@ services:
       - JAVA_OPTS=
             -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka -DCONFIG_SERVER_URL=http://config-server:8888/ #(name of eureka host==eureka container name)
     depends_on:
-      - eurekaserver
-      - configserver
+      - eureka-server
+      - config-server
     links: 
-        - eurekaserver
-        - configserver
+        - eureka-server
+        - config-server
         
   pet-clinic-gateway:
     image: pet-clinic-gateway:1.0
@@ -72,4 +72,4 @@ services:
       - JAVA_OPTS=
             -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka  #(name of eureka host==eureka container name)
     links: 
-        - eurekaserver
+        - eureka-server
