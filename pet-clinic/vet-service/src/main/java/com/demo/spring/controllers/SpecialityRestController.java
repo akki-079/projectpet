@@ -41,7 +41,8 @@ public class SpecialityRestController {
 	@PostMapping(path = "/spl")
 	@Timed(value="request.spl.save")
 	public ResponseEntity<Message> saveSpl(@RequestBody SpecialityDTO spl){
-		return ResponseEntity.ok(splService.addSpl(spl));
+		Speciality spl1 = new Speciality(spl.getSplName());
+		return ResponseEntity.ok(splService.addSpl(spl1));
 	}
 	
 	@DeleteMapping(path = "/spl/{splid}")

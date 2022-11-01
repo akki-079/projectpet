@@ -43,7 +43,8 @@ public class VetRestController {
 	@PostMapping(path = "/",consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Timed(value="request.vet.save")
 	public ResponseEntity<Message> saveVet(@RequestBody VetDTO vet){
-		return ResponseEntity.ok(vetService.addVet(vet));
+		Vet vet1 = new Vet(vet.getName(),vet.getPhNumber(),vet.getSplId());
+		return ResponseEntity.ok(vetService.addVet(vet1));
 	}
 	
 	@GetMapping(path = "/{splName}",produces = MediaType.APPLICATION_JSON_VALUE)
@@ -67,7 +68,8 @@ public class VetRestController {
 	@PutMapping(path = "/{vid}/{ph}",consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Timed(value="request.vet.update")
 	public ResponseEntity<Message> editVet(@PathVariable("vid") int id,@PathVariable("ph") String ph,@RequestBody VetDTO vet){
-		return ResponseEntity.ok(vetService.updateVet(id,ph,vet));
+		Vet vet1 = new Vet(vet.getName(),vet.getPhNumber(),vet.getSplId());
+		return ResponseEntity.ok(vetService.updateVet(id,ph,vet1));
 	}
 	
 	@ExceptionHandler(SplNotFoundException.class)

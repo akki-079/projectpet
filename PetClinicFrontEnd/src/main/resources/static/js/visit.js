@@ -1,4 +1,4 @@
-domain = "localhost";
+domain = "52.23.162.91";
 
 $(function() {
 	changePage('add-page', '/addVisitPage', 'add');
